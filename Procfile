@@ -1,0 +1,1 @@
+web: gunicorn noisuf.wsgi --log-file -

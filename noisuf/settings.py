@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '#1q&!s0%tx#jtiw5d3-we-&=*1tjyio=hse-@c_5$m3adw^=k#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -70,7 +71,7 @@ WSGI_APPLICATION = 'noisuf.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -80,6 +81,11 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
+}
+'''
+
+DATABASES = {
+    'default': dj_database_url.config()
 }
 
 # Password validation
@@ -122,7 +128,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Email teste console
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 """
 # Email produção
@@ -134,7 +140,5 @@ EMAIL_USE_TSL = True
 EMAIL_HOST_PASSWORD = 'admin'
 DEFAULT_FROM_EMAIL = 'jgjefersonluis@gmail.com'
 """
-
-
 
 LOGOUT_REDIRECT_URL = 'index'
